@@ -1,4 +1,4 @@
-#include "myFunctions.h"
+#include "myfunctions.h"
 /*
  * @lc app=leetcode id=12 lang=cpp
  *

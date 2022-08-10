@@ -1,4 +1,4 @@
-#include "myFunctions.h"
+#include "myfunctions.h"
 /**
  * Definition for singly-linked list.
  *

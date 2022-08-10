@@ -1,7 +1,4 @@
-#include <string>
-#include <vector>
-using std::string;
-using std::vector;
+#include "myfunctions.h"
 /*
  * @lc app=leetcode id=20 lang=cpp
  *
@@ -9,9 +6,9 @@ using std::vector;
  */
 
 /* Idea:
- * 1.²»ÂÛÔõÃ´ÅÅÁÐ£¬×ÜÓÐÒ»×éÀ¨ºÅÊÇ¡®¿ª±Õ¡¯ÏàÁÚµÄ
+ * 1.ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã´ï¿½ï¿½ï¿½Ð£ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç¡ï¿½ï¿½ï¿½ï¿½Õ¡ï¿½ï¿½ï¿½ï¿½Úµï¿½
  * 
- * ASCII        Ê®½øÖÆ
+ * ASCII        Ê®ï¿½ï¿½ï¿½ï¿½
  *  '('           40
  *  ')'           41
  *  '{'          123
@@ -86,6 +83,26 @@ public:
 
         return true;
     }
+
+    bool isValid3(string s)
+    {
+        stack<char> st;
+        for(int i = 0; i < s.size(); i++){
+            if(s[i] == '(')         st.push(')');
+            else if(s[i] == '[')    st.push(']');
+            else if(s[i] == '{')    st.push('}');
+            else{
+                if(!st.empty() && s[i] == st.top()){
+                    st.pop();
+                } else {
+                    return false;
+                }
+            }
+        }
+
+        return st.empty();
+    }
+
 private:
     int match_start_brackets(char c)
     {
