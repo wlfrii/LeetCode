@@ -35,6 +35,15 @@ struct TreeNode
     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
 };
 
+class Node
+{
+public:
+    int val;
+    vector<Node*> children;
+    Node(int x) : val(x), children({nullptr}) {}
+    Node(int x, vector<Node*> children) : val(x), children(children) {}
+};
+
 /****************************************************************
  *                    Introduction
  * 1. @ createListNode()
