@@ -7,52 +7,38 @@
 class Solution {
 public:
     string longestWord(vector<string>& words) {
-        if(words.size() < 1 || words.size() > 1000)
-            return "";
-        if(words.size() == 1)
-            return words[0];
-        
-        string res = words[0];
-        unsigned char num1 = 0;
-        num1 = charNumOfString(words[0], num1);
-
-        unsigned char num = 0;
-        for(auto it = words.begin() + 1; it != words.end(); ++it)
-        {
-            num = charNumOfString(*it, num);
-            if(num1 < num)
-            {
-                num1 = num;
-                res = *it;
+        int size = 0;
+        string result;
+        for(auto word : words) {
+            int idx[26] = {0};
+            for(auto ch : word) {
+                idx[ch - 'a'] = 1;
             }
-            else if(num1 == num)
-            {
-                res = compareString(res, *it);
+            // count
+            int count = 0;
+            for(int i = 0; i < 26; i++){
+                count += idx[i];
+            }
+            if(count == size){
+                int i = 0;
+                while(i < result.size() && i < word.size()) {
+                    int d = result[i] - word[i];
+                    if(d < 0){
+                        break;
+                    }
+                    else if(d > 0) {
+                        result = word;
+                        break;
+                    }
+                    i++;
+                }
+            }
+            else if(count > size) {
+                size = count;
+                result = word;
             }
         }
-        return res;
-    }
-private:
-    unsigned char & charNumOfString(const string &s, unsigned char &num) const{
-        num = 0;
-        for(unsigned int i = 0; i < s.size(); ++i)
-        {
-            if(s.find(s[i]) == i)
-                num++;
-        }
-        return num;
-    }
-
-    string & compareString(string &s1, string &s2)
-    {
-        for(int i = 0; i < s1.size(); ++i)
-        {
-            if(s1[i] < s2[i])
-                return s1;
-            else if(s1[i] > s2[i])
-                return s2;
-        }
-        return s1;
+        return result;
     }
 };
 
@@ -71,8 +57,8 @@ int main()
 
     string res1, res2, res3, res4;
     Solution sln;
-    res1 = sln.longestWord(vs1);
-    res2 = sln.longestWord(vs2);
+    // res1 = sln.longestWord(vs1);
+    // res2 = sln.longestWord(vs2);
     res3 = sln.longestWord(vs3);
 
 
