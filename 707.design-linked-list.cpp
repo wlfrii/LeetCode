@@ -105,6 +105,7 @@ private:
     ListNode *head;
 };
 
+
 /**
  * Your MyLinkedList object will be instantiated and called as such:
  * MyLinkedList* obj = new MyLinkedList();
@@ -134,9 +135,15 @@ int main()
     // myLinkedList.addAtIndex(5, 0);    
     // myLinkedList.addAtHead(6);
 
-    myLinkedList.addAtIndex(1, 0);
-    myLinkedList.get(0);
+    // myLinkedList.addAtIndex(1, 0);
+    // myLinkedList.get(0);
     
+    myLinkedList.addAtHead(1);
+    myLinkedList.addAtTail(3);
+    myLinkedList.addAtIndex(1, 2);
+    int ret = myLinkedList.get(1); 
+    myLinkedList.deleteAtIndex(1);
+    ret = myLinkedList.get(1);
 
     return 0;
 }
